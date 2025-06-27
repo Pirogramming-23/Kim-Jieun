@@ -116,6 +116,7 @@ header{
     background-color: var(--bg-gray);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .profil-upper{
     display: flex;
@@ -158,8 +159,20 @@ header{
     padding-top: 16px;
     font-size: 1.1rem;
 }
-
-
+.hamburger{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+.hamburger > div{
+    width: 100%;
+    height: 2px;
+    margin: 2px;
+    background-color: var(--bg-5);
+    transition: 0.3s;
+}
 
 
 
