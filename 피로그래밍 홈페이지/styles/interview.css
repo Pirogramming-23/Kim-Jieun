@@ -1,0 +1,231 @@
+:root {
+    --black: #000;
+    --bg-3: rgb(222, 222, 222);
+    --bg-5: rgba(236, 236, 236, 0.466);
+    --bg-gray: #333333;
+    --scroll-bar-gray: #222222;
+    --line-gray: #606060;
+    --white: #fff;
+    --subtext-gray: #c6c6c6;
+    --green-1: #0bec12;
+    --green-2: rgba(73, 191, 77, 0.8);
+    --green-3: rgba(73, 191, 77, 0.6);
+    --blue: #2188b6;
+    --red: #c54422;
+    --badge-green: #35a67b;
+    --hero: 8rem;
+    --heading1: 3.8rem;
+    --heading2: 2.8rem;
+    --heading3: 2.2rem;
+    --subheading: 1.8rem;
+    --body1: 1.6rem;
+    --body2: 1.4rem;
+    --caption: 1.2rem;
+    --weight1: 400;
+    --weight2: 500;
+    --weight3: 700;
+    --offset: 40px;
+    --gutter: 16px;
+    --border-r: 8px;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --transition: 0.15s;
+    --header-height: 9rem;
+}
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON%20Lv1%20Gothic%20OTF.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+    font-family: 'NEXON Lv1 Gothic OTF', -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+body{
+    color: var(--white);
+    background-color: var(--black)
+}
+#wrap{
+    align-items: center;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    height: 90px;
+    justify-self: anchor-center;
+    align-items: center;
+    padding: 0 40px;
+}
+.grid-container{
+    display: grid;
+}
+#menu-grid{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    min-width: 580px;
+    height: auto;
+}
+.menu-item{
+    padding: 5px;
+    justify-self: anchor-center;
+}
+.menu-item > a{
+    font-size: 18px;
+    font-weight: 520;
+}
+#menu-clicked{
+    color: var(--green-1);
+}
+#main{
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;  
+}
+#main-upper {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 40px;
+    margin: 0 0 16px;
+}
+#main-upper > div:first-child {
+    grid-column: 2;
+    justify-self: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+#mu-right {
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-self: end;
+    font-size: 16px;
+}
+#mu-right svg {
+    width: 18px;
+    height: 18px;
+}
+#main-grid{
+    grid-template-columns: repeat(3, 1fr);
+}
+.main-item{
+    padding: 16px;
+    margin: 8px;
+    border-radius: 10px;
+    background-color: var(--bg-gray);
+    display: flex;
+    flex-direction: column;
+}
+.profil-upper{
+    display: flex;
+    align-items: flex-end;
+}
+.profile-img{
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    overflow: hidden;
+}
+.profile-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.name{
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+.major{
+    border-radius: 5px;
+    background-color: var(--blue);
+    margin: 6px 0;
+    padding: 6px 8px;
+}
+.non-major{
+    border-radius: 5px;
+    background-color: var(--red);
+    margin: 6px 0;
+    padding: 6px 8px;
+}
+.introduce-text{
+    padding-top: 16px;
+    font-size: 1.1rem;
+}
+
+
+
+
+
+#footer-top{
+    display: flex;
+    padding: 40px;
+    background-color: #333333;
+    margin-top: 50px;
+    justify-content: space-around;
+}
+#top-left-upper{
+    display: flex;
+}
+#top-left-upper > div svg {
+    width: 18px;
+    height: 18px;
+}
+#top-left-lower{
+    display: flex;
+    gap: 6px;
+}
+#kakaotalk, #github, #instagram, #gmail{
+    width: 21px;
+    height: 21px;
+}
+#top-right{
+    display: flex;
+}
+#top-right ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+#footer-lower{
+    background-color: var(--bg-gray);
+    text-align: center;
+    width: 100%;
+}
+
+.hover-up {
+  transition: transform 0.2s ease; 
+}
+.hover-up:hover {
+  transform: translateY(-2px); 
+}
+a.hover-up {
+  display: inline-block;
+}
+.hover-image img{
+    transition: transform 0.3s ease;
+}
+.hover-image:hover img {
+  transform: scale(1.1);
+}
+
+
+@media (max-width: 768px){
+    #main-grid{
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px){
+    #main-grid{
+    grid-template-columns: repeat(1, 1fr);
+    }
+}
