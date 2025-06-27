@@ -118,7 +118,7 @@ header{
     border-radius: 10px;
     background-color: var(--bg-gray);
     display: flex;
-
+    position: relative;
 }
 .project-img{
     width: 150px;
@@ -167,6 +167,37 @@ header{
     color: var(--black);
     margin: 6px 0;
     padding: 6px 8px;
+}
+.hamburger{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+.hamburger > div{
+    width: 100%;
+    height: 2px;
+    margin: 2px;
+    background-color: var(--bg-5);
+    transition: 0.3s;
+}
+.bar {
+  display: block;
+}
+.main-item:hover .bar{
+    animation: wave 1s ease-in-out 1;
+}
+.main-item:hover .bar:nth-child(1) { transform: scaleX(0.5); transform-origin: left; }
+.main-item:hover .bar:nth-child(2) { transform: scaleX(1); }
+.main-item:hover .bar:nth-child(3) { transform: scaleX(0.5); transform-origin: right; }
+@keyframes wave {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0.5);
+    }
 }
 #footer-top{
     display: flex;

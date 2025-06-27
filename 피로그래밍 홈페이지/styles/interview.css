@@ -163,8 +163,8 @@ header{
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 16px;
+    right: 16px;
 }
 .hamburger > div{
     width: 100%;
@@ -172,6 +172,23 @@ header{
     margin: 2px;
     background-color: var(--bg-5);
     transition: 0.3s;
+}
+.bar {
+  display: block;
+}
+.main-item:hover .bar{
+    animation: wave 1s ease-in-out 1;
+}
+.main-item:hover .bar:nth-child(1) { transform: scaleX(0.5); transform-origin: left; }
+.main-item:hover .bar:nth-child(2) { transform: scaleX(1); }
+.main-item:hover .bar:nth-child(3) { transform: scaleX(0.5); transform-origin: right; }
+@keyframes wave {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0.5);
+    }
 }
 
 
