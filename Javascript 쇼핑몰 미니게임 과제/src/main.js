@@ -9,7 +9,7 @@ function loadItems(){
 function displayItems(items){
     const container = document.querySelector('.items');
     const html = items.map(item => createHTMLString(item));
-    container.innerHTML = items.map(item => createHTMLString(item)),join('');
+    container.innerHTML = items.map(item => createHTMLString(item)).join('');
 }
 
 //Create HTML list item from the given data item
@@ -21,11 +21,32 @@ function createHTMLString(item){
     </li>
     `;
 }
+
+function onButtonClick(event, items){
+    const dataset = event.target.dataset;
+    const key = dataset.key;
+    const value = dataset.value;
+
+    if (key == null || value == null){
+        return;
+    }
+    
+    const filtered = items.filter(item => item[key] === value);
+    displayItems(filtered);
+
+}
+function setEventListner(items){
+    const logo = document.querySelector('.logo');
+    const buttons = document.querySelector('.buttons');
+    logo.addEventListener('click', () => displayItems(items));
+    buttons.addEventListener('click', event => onButtonClick(event, items));
+
+}
 //main
 loadItems()
     .then(items => {
         console.log(items);
         displayItems(items);
-        //setEventListner(items)
+        setEventListner(items)
     })
     .catch(console.log)
