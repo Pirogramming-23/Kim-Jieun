@@ -5,4 +5,5 @@ while True:
     elif num not in ['1', '2', '3']:
         print("1,2,3 중 하나를 입력하세요")
     else:
-        break
+        for i in range(1, int(num)+1):
+            print(f"playerA:{i}")
