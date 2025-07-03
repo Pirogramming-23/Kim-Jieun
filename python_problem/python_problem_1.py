@@ -8,9 +8,18 @@ def call_num():
         else:
             return int(num)
 
-a_num = call_num()
-for i in range(1, a_num+1):
-            print(f"playerA:{i}")
-b_num = call_num()
-for i in range(1, b_num+1):
-            print(f"playerB:{a_num + i}")
+start_num = 1
+count = 1
+
+while True:
+    player = 'B' if count % 2 == 0 else 'A'
+    num = call_num()
+    end_num = start_num + num
+    for i in range(start_num, end_num):
+        print(f"player{player}: {i}")
+        if i == 31:
+            break
+    if end_num > 31:
+        break
+    start_num = end_num
+    count+=1
