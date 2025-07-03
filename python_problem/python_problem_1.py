@@ -20,6 +20,10 @@ while True:
         if i == 31:
             break
     if end_num > 31:
+        count+=1
         break
     start_num = end_num
     count+=1
+
+player = 'B' if count % 2 == 0 else 'A'
+print(f"player{player} win!")
