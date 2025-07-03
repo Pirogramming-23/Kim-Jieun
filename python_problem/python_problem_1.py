@@ -7,23 +7,32 @@ def call_num():
             print("1,2,3 중 하나를 입력하세요")
         else:
             return int(num)
+        
+def check_player(count):
+    player = 'B' if count % 2 == 0 else 'A'
+    return player
+
+def brGame(start_num, end_num):
+    for i in range(start_num, end_num):
+        print(f"player{player}: {i}")
+        if i == 31:
+            return "game_over"
+
 
 start_num = 1
 count = 1
 
 while True:
-    player = 'B' if count % 2 == 0 else 'A'
+    player = check_player(count)
     num = call_num()
     end_num = start_num + num
-    for i in range(start_num, end_num):
-        print(f"player{player}: {i}")
-        if i == 31:
-            break
-    if end_num > 31:
+    
+    result = brGame(start_num, end_num)
+    if result == "game_over":
         count+=1
+        player = check_player(count)
+        print(f"player{player} win!")
         break
+    
     start_num = end_num
     count+=1
-
-player = 'B' if count % 2 == 0 else 'A'
-print(f"player{player} win!")
