@@ -50,6 +50,13 @@ body {
     justify-content: center;
     align-self: center;
 }
+.real_time{
+    color: black;
+    font-size: 50px;
+    font-weight: 500;
+    justify-content: center;
+    align-self: center;
+}
 .button_space{
     display: flex;
     width: 100%;
@@ -63,6 +70,7 @@ body {
     color: #0bec12;
     font-size: 17px;
     font-weight: 550;
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .start_button, .stop_button, .reset_button{
     padding: 5px 10px;
@@ -126,13 +134,14 @@ input[type="checkbox"]:checked ~ .mark {
 }
 .recored_list{
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
     font-size: 18px;
     font-weight:500;
     background-color: #e1e1e1;
     overflow-y: auto;
-    padding: 5px 20px;
+    padding: 0 20px;
 }
 .recorded_list_element{
     width: 100%;
