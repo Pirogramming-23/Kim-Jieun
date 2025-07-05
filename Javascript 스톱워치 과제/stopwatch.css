@@ -1,0 +1,161 @@
+body {
+    background-color: #eeeeee;
+    color: black;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 25px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.title > svg{
+    width: 27px;
+    height: 27px;
+}
+
+.stopwatch{
+    width: 300px;
+    height: 170px;
+    background-color: #bababa;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border-radius: 20px;
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.time_space{
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    display: flex;
+    margin: 10px 0;
+    border-radius: 20px;
+    justify-content: center;
+    align-self: center;
+}
+.real_time{
+    color: black;
+    font-size: 50px;
+    font-weight: 500;
+    justify-content: center;
+    align-self: center;
+}
+.button_space{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    gap: 10px;
+    margin: 5px;
+    justify-content: center;
+    align-self: center;
+}
+.button_space button{
+    color: #0bec12;
+    font-size: 17px;
+    font-weight: 550;
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.start_button, .stop_button, .reset_button{
+    padding: 5px 10px;
+    background-color: #fff;
+    width: 60px;
+    height: 45px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.record{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.record_title{
+    display: flex;
+    flex-direction: row;
+    background-color: #bababa;
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    font-weight:500;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+    padding:10px 20px;
+    justify-content: space-between;
+}
+.record_title > svg{
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+}
+.check_box, .list_check_box{
+    position: absolute;
+    opacity: 0;
+}
+.check-container {
+  display: inline-block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.mark {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+input[type="checkbox"]:checked ~ .mark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.recored_list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    font-weight:500;
+    background-color: #e1e1e1;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+.recorded_list_element{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+}
+.list_checkmark{
+    display: flex;
+}
+.recorded_time{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}

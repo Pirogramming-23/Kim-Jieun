@@ -82,6 +82,7 @@ function checkTheAnswer(input_answer){
     results_container.scrollTop = results_container.scrollHeight;
     attempts -= 1;
     attempts_container.textContent = attempts;
+    Array.from(input_container).forEach(input => input.value = "");
 
 
     /// 게임 종료 조건 확인
