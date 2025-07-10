@@ -4,31 +4,35 @@
     <div class="container">
         <div class="page-title">Movie Review</div>
 
-        <form action="/posts/create" method="post">
+        <form action="/posts/create/" method="post">
             {% csrf_token %}
             <div class="label">제목: </div>
-            <input class="title">
+            <input class="title" name="title">
 
             <div class="label">개봉년도: </div>
-            <input class="release_year">
+            <input class="release" name="release">
 
             <div class="label">장르: </div>
-            <input class="genre">
+            <input class="genre" name="genre">
 
             <div class="label">별점: </div>
-            <input class="rating">
+            <input class="rating" name="rating">
 
             <div class="label">러닝타임: </div>
-            <input class="runningTime">
+            <input class="runningTime" name="runningTime">
 
             <div class="label">리뷰: </div>
-            <input class="content">
+            <input class="content" name="content">
 
             <div class="label">감독: </div>
-            <input class="director">
+            <input class="director" name="director">
 
             <div class="label">배우: </div>
-            <input class="actor">
+            <input class="actor" name="actor">
+
+            <div>
+                <input type="submit" value="작성완료">
+            </div>
         </form>
 
         <div class="bottom_links">

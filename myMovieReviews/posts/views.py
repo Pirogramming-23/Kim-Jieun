@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Review
 
 # Create your views here.
@@ -16,7 +16,7 @@ def reviews_create(request):
     if request.method == "POST":
         Review.objects.create(
             title=request.POST["title"],
-            release_year=request.POST["release_year"],
+            release=request.POST["release"],
             rating=request.POST["rating"],
             runningTime=request.POST["runningTime"],
             content=request.POST["content"],
