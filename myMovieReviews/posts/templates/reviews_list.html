@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Reviews</title>
+</head>
+<body>
+    <div class="container">
+        <header class="main_header">
+            <div class="logo">
+                my Movie reviews
+            </div>
+            <button class="addBtn">Add a New review</button>
+        </header>
+        <div class="review_lists">
+            {% for review in reviews %}
+                <a href="/posts/{{review.id}}">
+                    <div class="review">
+                        <div class="title">{{review.title}}</div>
+
+                        <div class="label">개봉년도</div>
+                        <div class="release_year">{{review.release}}</div>
+
+                        <div class="label">장르</div>
+                        <div class="genre">{{review.genre}}</div>
+
+                        <div class="label">평점</div>
+                        <div class="rating">{{review.rating}}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
