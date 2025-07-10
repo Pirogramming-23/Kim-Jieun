@@ -4,31 +4,32 @@
     <div class="container">
         <div class="page-title">Movie Review</div>
 
-        <div class="review_item">
+        <form action="/posts/create" method="post">
+            {% csrf_token %}
             <div class="label">제목: </div>
-            <div class="title">{{review.title}}</div>
+            <input class="title">
 
             <div class="label">개봉년도: </div>
-            <div class="release_year">{{review.release}}</div>
+            <input class="release_year">
 
             <div class="label">장르: </div>
-            <div class="genre">{{review.genre}}</div>
+            <input class="genre">
 
             <div class="label">별점: </div>
-            <div class="rating">{{review.rating}}</div>
+            <input class="rating">
 
             <div class="label">러닝타임: </div>
-            <div class="runningTime">{{review.runningTime}}</div>
+            <input class="runningTime">
 
             <div class="label">리뷰: </div>
-            <div class="content">{{review.content}}</div>
+            <input class="content">
 
             <div class="label">감독: </div>
-            <div class="director">{{review.director}}</div>
+            <input class="director">
 
             <div class="label">배우: </div>
-            <div class="actor">{{review.actor}}</div>
-        </div>
+            <input class="actor">
+        </form>
 
         <div class="bottom_links">
             <a href="/posts/" class="back-link">목록으로 돌아가기</a>
