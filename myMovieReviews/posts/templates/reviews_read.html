@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-title">Movie Review</div>
+
+        <div class="review_item">
+            <div class="label">제목: </div>
+            <div class="title">{{review.title}}</div>
+
+            <div class="label">개봉년도: </div>
+            <div class="release_year">{{review.release}}</div>
+
+            <div class="label">장르: </div>
+            <div class="genre">{{review.genre}}</div>
+
+            <div class="label">별점: </div>
+            <div class="rating">{{review.rating}}</div>
+
+            <div class="label">러닝타임: </div>
+            <div class="runningTime">{{review.runningTime}}</div>
+
+            <div class="label">리뷰: </div>
+            <div class="content">{{review.content}}</div>
+
+            <div class="label">감독: </div>
+            <div class="director">{{review.director}}</div>
+
+            <div class="label">배우: </div>
+            <div class="actor">{{review.actor}}</div>
+        </div>
+
+        <div class="bottom_links">
+            <a href="/posts" class="back-link">목록으로 돌아가기</a>
+            <a href="/posts/{{ post.id }}/update/" class="edit-link">✏️ 수정</a>
+            <a href="/posts/{{ post.id }}/delete/" class="delete-link">🗑 삭제</a>
+        </div>
+    </div>
+{% endblock %}
