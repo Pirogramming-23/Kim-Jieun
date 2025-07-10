@@ -25,3 +25,21 @@ def reviews_create(request):
         )
         return redirect("/posts/")
     return render(request, "reviews_create.html")
+
+def reviews_update(request, pk):
+    review = Review.objects.get(id=pk)
+    
+    if request.method == "POST":
+        review.title=request.POST["title"]
+        review.release=request.POST["release"]
+        review.rating=request.POST["rating"]
+        review.runningTime=request.POST["runningTime"]
+        review.content=request.POST["content"]
+        review.director=request.POST["director"]
+        review.actor=request.POST["actor"]
+        review.save()
+        return redirect(f"/posts/{pk}/")
+    
+    context = {"review": review}
+    return render(request, "reviews_update.html", context)
+        
