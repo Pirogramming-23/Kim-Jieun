@@ -4,31 +4,54 @@
     <div class="container">
         <div class="page-title">Movie Review</div>
 
-        <form action="/posts/create/" method="post">
+        <form action="/posts/create/" method="post" class="review-form">
             {% csrf_token %}
-            <div class="label">제목: </div>
-            <input class="title" name="title">
 
-            <div class="label">개봉년도: </div>
-            <input class="release" name="release">
 
-            <div class="label">장르: </div>
-            <input class="genre" name="genre">
+            <div>
+                <div class="label">제목: </div>
+                <input class="title" name="title" style="width: 300px;" required oninvalid="this.setCustomValidity('제목을 입력해주세요')" oninput="this.setCustomValidity('')">
+            </div>
 
-            <div class="label">별점: </div>
-            <input class="rating" name="rating">
+            <div>
+                <div class="label">개봉년도: </div>
+                <input class="release" name="release" style="width: 100px;">
+            </div>
 
-            <div class="label">러닝타임: </div>
-            <input class="runningTime" name="runningTime">
+            <div>
+                <div class="label">장르: </div>
+                <select name="genre">
+                    <option value="" disabled selected>--- 장르 선택 ---</option>
+                    {% for value, label in genres %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-            <div class="label">리뷰: </div>
-            <input class="content" name="content">
+            <div>
+                <div class="label">별점: </div>
+                <input class="rating" name="rating" style="width: 50px;">
+            </div>
 
-            <div class="label">감독: </div>
-            <input class="director" name="director">
+            <div>
+                <div class="label">러닝타임: </div>
+                <input class="runningTime" name="runningTime" type="number" min="0" style="width: 100px;" required oninvalid="this.setCustomValidity('러닝타임을 입력해주세요')" oninput="this.setCustomValidity('')">
+            </div>
 
-            <div class="label">배우: </div>
-            <input class="actor" name="actor">
+            <div class="review_form_content">
+                <div class="label">리뷰: </div>
+                <textarea class="content" name="content"></textarea>
+            </div>
+
+            <div>
+                <div class="label">감독: </div>
+                <input class="director" name="director" style="width: 100px;">
+            </div>
+
+            <div>
+                <div class="label">배우: </div>
+                <input class="actor" name="actor" style="width: 300px;">
+            </div>
 
             <div>
                 <input type="submit" value="작성완료">

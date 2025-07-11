@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Review
+from .models import Review, GENRES
 
 # Create your views here.
 def reviews_list(request):
@@ -9,7 +9,11 @@ def reviews_list(request):
 
 def reviews_read(request, pk):
     review = Review.objects.get(id=pk)
-    context = {"review" : review}
+    hours = review.runningTime // 60
+    minutes = review.runningTime % 60
+    running_time = f"{hours}시간 {minutes}분"
+    context = {"review" : review,
+               "running_time": running_time}
     return render(request, "reviews_read.html", context)
 
 def reviews_create(request):
@@ -24,7 +28,7 @@ def reviews_create(request):
             actor=request.POST["actor"],
         )
         return redirect("/posts/")
-    return render(request, "reviews_create.html")
+    return render(request, "reviews_create.html", {'genres': GENRES})
 
 def reviews_update(request, pk):
     review = Review.objects.get(id=pk)
@@ -32,6 +36,7 @@ def reviews_update(request, pk):
     if request.method == "POST":
         review.title=request.POST["title"]
         review.release=request.POST["release"]
+        review.genre=request.POST["genre"]
         review.rating=request.POST["rating"]
         review.runningTime=request.POST["runningTime"]
         review.content=request.POST["content"]
@@ -40,7 +45,8 @@ def reviews_update(request, pk):
         review.save()
         return redirect(f"/posts/{pk}/")
     
-    context = {"review": review}
+    context = {"review": review,
+               'genres': GENRES}
     return render(request, "reviews_update.html", context)
 
 def reviews_delete(request, pk):
