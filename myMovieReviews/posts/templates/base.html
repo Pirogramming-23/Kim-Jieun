@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="main_header">
+        <div class="logo">
+            <a href="/posts/" class="logo-link">My Movie review</a>
+        </div>
+        <a href="/posts/create/" class="add_review">Add a New review</a>
+    </header>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

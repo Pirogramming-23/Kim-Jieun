@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="review_lists">
+        {% for review in reviews %}
+            <a href="/posts/{{review.id}}">
+                <div class="review">
+                    <div class="title">{{review.title}}</div>
+
+                    <div>
+                        <div class="label">개봉년도</div>
+                        <div class="release_year">{{review.release}}</div>
+                    </div>
+                    
+                    <div>
+                        <div class="label">장르</div>
+                        <div class="genre">{{review.genre}}</div>
+                    </div>
+
+                    <div>
+                        <div class="label">평점</div>
+                        <div class="rating">{{review.rating}}</div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

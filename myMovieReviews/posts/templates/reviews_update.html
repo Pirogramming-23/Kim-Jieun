@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-title">Movie Review</div>
+
+        <form action="/posts/{{review.id}}/update/" method="post" class="review-form">
+            {% csrf_token %}
+            
+            <div>
+                <div class="label">제목: </div>
+                <input class="title" name="title" value="{{review.title}}" style="width: 300px;" required oninvalid="this.setCustomValidity('제목을 입력해주세요')" oninput="this.setCustomValidity('')">
+            </div>
+
+            <div>
+                <div class="label">개봉년도: </div>
+                <input class="release" name="release" value="{{review.release}}" style="width: 100px;">
+            </div>
+
+            <div>
+                <div class="label">장르: </div>
+                <select name="genre">
+                    <option value="" disabled selected>--- 장르 선택 ---</option>
+                    {% for value, label in genres %}
+                        <option value="{{ value }}" {% if review.genre == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <div class="label">별점: </div>
+                <input class="rating" name="rating" value="{{review.rating}}" style="width: 50px;">
+            </div>
+
+            <div>
+                <div class="label">러닝타임: </div>
+                <input class="runningTime" name="runningTime" type="number" min="0" value="{{review.runningTime}}" style="width: 100px;" required oninvalid="this.setCustomValidity('러닝타임을 입력해주세요')" oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="review_form_content">
+                <div class="label">리뷰: </div>
+                <textarea class="content" name="content" >{{review.content}}</textarea>
+            </div>
+
+            <div>
+                <div class="label">감독: </div>
+                <input class="director" name="director" value="{{review.director}}" style="width: 100px;">
+            </div>
+
+            <div>
+                <div class="label">배우: </div>
+                <input class="actor" name="actor" value="{{review.actor}}" style="width: 300px;">
+            </div>
+
+            <div>
+                <input type="submit" value="수정완료">
+            </div>
+        </form>
+    </div>
+{% endblock %}
