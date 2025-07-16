@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1 class="page-title">
+        Idea Create
+    </h1>
+    <h3 class="page-detail">
+        아이디어 등록 페이지 입니다. 당신의 아이디어를 잊지 말고 기록하세요!
+    </h3>
+    <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-add">등록하기</button>
+    </form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="page-title">
+        DevTool List
+    </h1>
+    <h3 class="page-detail">
+        개발툴 목록 페이지 입니다. 개발에 사용할 개발툴 목록을 확인해보세요!
+    </h3>
+    <div class="tool-list">
+        {% for tool in tools %}
+        <div class="tool-item">
+            <div class="tool-info">
+                <a class="tool-name" href="{% url 'tools:detail' tool.pk %}">{{tool.name}}</a>
+                <p class="tool-kind">{{tool.kind}}</p>
+                <p class="tool-content">{{tool.content}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
