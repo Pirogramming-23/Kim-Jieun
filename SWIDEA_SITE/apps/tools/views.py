@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tool
 from .forms import ToolForm
 
@@ -24,7 +24,7 @@ def create(request):
         return redirect('tools:main')
 
 def detail(request, pk):
-    target_tool = Tool.objects.get(id = pk)
+    target_tool = get_object_or_404(Tool, id = pk)
     context = { 'tool': target_tool }
     return render(request, 'tools/toolDetail.html', context=context)
 
