@@ -80,3 +80,19 @@ def update_interest(request, pk):
     idea.save()
     print("After:", idea.interest)
     return JsonResponse({'updated_interest': idea.interest})
+
+def sorted_idea_list(request):
+    standard = request.GET.get('standard', 'interest')
+    
+    if standard == 'name':
+        ideas = Idea.objects.order_by('title')
+    elif standard == 'latest':
+        ideas = Idea.objects.order_by('-id')
+    elif standard == 'oldest':
+        ideas = Idea.objects.order_by('id')
+    elif standard == 'interest':
+        ideas = Idea.objects.order_by('-interest')
+    else:
+        ideas = Idea.objects.order_by('id') # 디폴트
+
+    return render(request, 'posts/idea-list.html', {'ideas': ideas})

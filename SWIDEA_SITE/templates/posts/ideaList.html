@@ -9,33 +9,12 @@
         나의 아이디어를 기록해보세요!
     </h3>
     <select name="sort-standard" id="sort-standard" onchange="ideaSorting()">
-        <option value="likely">관심도순</option>
-        <option value="likely">등록순</option>
-        <option value="likely">최신순</option>
-        <option value="likely">이름순</option>
+        <option value="interest">관심도순</option>
+        <option value="oldest">등록순</option>
+        <option value="latest">최신순</option>
+        <option value="title">이름순</option>
     </select>
     <div class="idea-list">
-        {% for idea in ideas %}
-        <div class="idea-item">
-            <div class="star-toggle" data-ideaid="{{ idea.pk }}" onclick="toggleStar({{ idea.pk }})" id="star-{{ idea.pk }}">
-
-            </div>
-            {% if idea.image %}
-            <img src="{{ idea.image.url }}" alt="업로드 이미지" />
-            {% else %}
-            <img src="{% static 'posts/image/no-image.jpg' %}" alt="기본 이미지" />
-            {% endif %}
-            <div class="idea-info">
-                <a class="idea-title" href="{% url 'posts:detail' idea.pk %}">{{idea.title}}</a>
-                <p class="idea-tools">예상 개발 툴: {{idea.devtool}}</p>
-                <p class="idea-likes">
-                    아이디어 관심도:
-                    <button onclick="updateInterest({{ idea.pk }}, -1)">-</button>
-                    <span id="interest-{{ idea.pk }}">{{ idea.interest }}</span>
-                    <button onclick="updateInterest({{ idea.pk }}, 1)">+</button>
-                </p>
-            </div>
-        </div>
-        {% endfor %}
+        
     </div>
 {% endblock content %}

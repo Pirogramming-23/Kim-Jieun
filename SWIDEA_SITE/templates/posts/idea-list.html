@@ -1,0 +1,23 @@
+{% load static %}
+{% for idea in ideas %}
+<div class="idea-item">
+    <div class="star-toggle" data-ideaid="{{ idea.pk }}" onclick="toggleStar({{ idea.pk }})" id="star-{{ idea.pk }}">
+
+    </div>
+    {% if idea.image %}
+    <img src="{{ idea.image.url }}" alt="업로드 이미지" />
+    {% else %}
+    <img src="{% static 'posts/image/no-image.jpg' %}" alt="기본 이미지" />
+    {% endif %}
+    <div class="idea-info">
+        <a class="idea-title" href="{% url 'posts:detail' idea.pk %}">{{idea.title}}</a>
+        <p class="idea-tools">예상 개발 툴: {{idea.devtool}}</p>
+        <p class="idea-likes">
+            아이디어 관심도:
+            <button onclick="updateInterest({{ idea.pk }}, -1)">-</button>
+            <span id="interest-{{ idea.pk }}">{{ idea.interest }}</span>
+            <button onclick="updateInterest({{ idea.pk }}, 1)">+</button>
+        </p>
+    </div>
+</div>
+{% endfor %}

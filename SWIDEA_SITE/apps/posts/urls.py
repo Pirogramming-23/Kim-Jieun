@@ -14,4 +14,5 @@ urlpatterns = [
     path('star_status/', views.star_status, name='star_status'),
     path('star/<int:pk>/', views.star, name='star'),
     path('interest/<int:pk>/', views.update_interest, name='update_interest'),
+    path('ideas/sorted/', views.sorted_idea_list, name='posts:sorted_idea_list'),
 ]
