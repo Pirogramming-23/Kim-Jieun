@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1 class="page-title">
+        DevTool Detail
+    </h1>
+    <h3 class="page-detail">
+        개발툴 세부 내용 페이지 입니다.
+    </h3>
+    
+    <h1 style="color: green; font-size: 40px">{{tool.name}}</h1>
+
+    <p>{{tool.kind}}</p>
+    <p>{{tool.content}}</p>
+
+    <p>만들 수 있는 SW 목록</p>
+    <ul>
+        {% for idea in tool.idea_set.all %}
+        <li><a href="{% url 'posts:detail' idea.pk %}">{{ idea.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <hr />
+    <a href="{% url 'tools:update' tool.pk %}" class="btn-update">수정하기</a>
+    <a href="{% url 'tools:delete' tool.pk %}" class="btn-delete">삭제하기</a>
+    <a href="{% url 'tools:main' %}" class="btn-list">목록가기</a>
+{% endblock content %}

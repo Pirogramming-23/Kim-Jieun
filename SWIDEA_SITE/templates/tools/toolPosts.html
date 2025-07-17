@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1 class="page-title">
+        DevTool Create
+    </h1>
+    <h3 class="page-detail">
+        개발툴 등록 페이지 입니다.
+    </h3>
+    <form method="POST" action="{% url 'tools:create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-add">등록하기</button>
+    </form>
+{% endblock content %}

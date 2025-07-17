@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="page-title">
+        Idea List
+    </h1>
+    <h3 class="page-detail">
+        나의 아이디어를 기록해보세요!
+    </h3>
+    <select name="sort-standard" id="sort-standard" onchange="ideaSorting()">
+        <option value="interest">관심도순</option>
+        <option value="oldest">등록순</option>
+        <option value="latest">최신순</option>
+        <option value="title">이름순</option>
+    </select>
+    <div class="idea-list">
+        
+    </div>
+{% endblock content %}
