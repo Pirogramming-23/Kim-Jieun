@@ -6,6 +6,17 @@
     <title>Pirostagram</title>
 </head>
 <body>
-    <h1 class="logo">Pirostagram</h1>
+    <div class="left-field"><!--사진이 들어갈 자리--></div>
+    <div class="right-field">
+        <h1 class="logo">Pirostagram</h1>
+        <form action="{% url 'user:login_view' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="send-form">로그인</button>
+        </form>
+        <div>계정이 없으신가요?
+            <a href="{% url 'user:join_view' %}">가입하기</a>
+        </div>
+    </div>
 </body>
 </html>

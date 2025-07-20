@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body{
+            display: grid;
+            grid-template-columns: 1fr 5fr 2fr;
+            padding: 10px;
+            gap: 10px;
+            height: 100%;
+        }
+        .feed{
+            text-align: center;
+        }
+        .right{
+            text-align: right;
+        }
+        body div{
+            background-color: #e2e2e2;
+            padding: 20px;
+        }
+
+        .feed-story{
+            height: 60px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ff8400;
+        }
+    </style>
+</head>
+<body>
+    <!--왼쪽 네비게이션 바-->
+    <div class="navbar">
+        <a href="post/home/">Pirostagram</a>
+        <ol>
+            <li><a href="post/home/">홈</a></li>
+            <li><a href="#">검색</a></li>
+            <li><a href="#">탐색 탭</a></li>
+            <li><a href="#">릴스</a></li>
+            <li><a href="#">메시지</a></li>
+            <li><a href="#">알림</a></li>
+            <li><a href="{% url 'post:create_post' %}">만들기</a></li>
+            <li><a href="#">프로필</a></li>
+        </ol>
+        <a href="#">Threads</a>
+        <a href="#">더 보기</a>
+    </div>
+
+    <!--중간 피드-->
+    <div class="feed">
+        <div class="feed-story">
+            {% for story in stories %}
+            {% endfor %}
+        </div>
+        <div class="feed-posts">
+            {% for post in posts %}
+            <div class="post">
+                <div class="post-upper">
+                    <div class="post-upper-left">
+                        <!--프로필사진-->
+                        <a href="#">{{ user.username }}</a>
+                        •
+                        <!--업로드 시간-->
+                    </div>
+                    <div>더보기</div>
+                </div>
+                <div class="img-content"></div>
+                <div class="post-buttons">
+                    <!--좋아요-->
+                    <!--댓글-->
+                    <!--공유-->
+                    <!--저장-->
+                </div>
+                <div class="post-likes">좋아요 {{post.likes}}개</div>
+                <div class="txt-content">{{post.txtContent}}</div>
+                <div class="comments">
+                    <a href="#">댓글 {{post.comments}}개 모두 보기</a>
+                    <form action="">댓글 달기...</form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!--오른쪽 계정 추천-->
+    <div class="right">
+        <div class="user-suggest">
+            {% for user in users %}
+            <!--프로필 사진-->
+            <!--계정명-->
+            <!--팔로우 버튼-->
+            {% endfor %}
+        </div>
+        <div class="footer">
+            <div>
+                <a href="#">소개</a>
+                <a href="#">도움말</a>
+                <a href="#">홍보 센터</a>
+                <a href="#">API</a>
+                <a href="#">채용 정보</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">약관</a>
+                <a href="#">위치</a>
+                <a href="#">언어</a>
+                <a href="#">Meta Verified</a>
+            </div>
+            © 2025 Instagram from Meta
+        </div>
+    </div>
+</body>
+</html>

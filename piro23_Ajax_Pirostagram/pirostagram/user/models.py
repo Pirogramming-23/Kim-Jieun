@@ -7,5 +7,5 @@ class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(null=False, blank=False)
     
-    def __str__(delf):
+    def __str__(self):
         return self.username
