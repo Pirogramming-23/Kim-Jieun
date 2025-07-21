@@ -51,3 +51,7 @@ def join_view(request):
             return redirect('user:login_view')
         else:
             return render(request, 'user/join_index.html', {'form': form})
+        
+def logout_view(request):
+    logout(request)
+    return redirect('user:login_view')
