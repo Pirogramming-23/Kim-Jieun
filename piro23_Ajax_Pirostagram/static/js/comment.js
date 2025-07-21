@@ -41,7 +41,10 @@ const handleCommentResponse = (postId, comment) => {
             </div>
             <div class="comment-inter">
                 방금 전
-                <a href="#">답글 달기</a>
+                <form method="post" action="/delete_comment/${comment.id}/" style="display:inline;">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="${getCSRFToken()}">
+                    <button type="submit" class="comment-delete" style="background:none; border:none; color:#f00; cursor:pointer;">삭제</button>
+                </form>
             </div>
         `;
         commentList.appendChild(newCommentElement);

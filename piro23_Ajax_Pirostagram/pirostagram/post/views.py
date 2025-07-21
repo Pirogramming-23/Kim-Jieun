@@ -100,3 +100,9 @@ def delete_post(request, pk):
     post = get_object_or_404(Post, id=pk)
     post.delete()
     return redirect('post:home')
+
+def delete_comment(request, pk):
+    comment = get_object_or_404(PostComment, id=pk)
+    post_pk = comment.post.pk
+    comment.delete()
+    return redirect('post:post_detail', pk=post_pk)
