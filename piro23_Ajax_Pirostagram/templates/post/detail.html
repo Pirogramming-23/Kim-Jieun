@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'post/css/detail.css'%}">
+    <title>posting</title>
+</head>
+<body>
+    <div class="post">
+        <div class="img-content">
+            {% for img in post.images.all %}
+                <img src="{{ img.image.url }}" alt="Post Image" style="max-width: 100%; height: auto;" />
+            {% endfor %}
+        </div>
+        <div>
+            <div class="post-upper">
+                <div class="post-upper-left">
+                    <a href="#">{{ post.author }}</a>
+                </div>
+            </div>
+            <div class="scroll-area">
+                <div class="txt-content">{{post.txtContent}}</div>
+                <div class="posted-time">{{ post.created_at }}</div>
+                <div class="comment-area" id="comment-list">
+                    {% for comment in comments %}
+                    <div class="comment-obj">
+                        <div class="comment-area">
+                            <a href="#">{{ comment.author }}</a>
+                            <div>{{ comment.content }}</div>
+                        </div>
+                        <div class="comment-inter">
+                            {{ comment.created_at }}
+                            <form method="post" action="{% url 'post:delete_comment' comment.pk %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="comment-delete" style="background:none; border:none; color:#f00; cursor:pointer;">삭제</button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post-buttons">
+                <div class="likebtn" onClick="onClickLike({{ post.id }})">좋아요 버튼</div>
+                <a class="commentbtn" href="{% url 'post:post_detail' post.pk %}">댓글</a>
+            </div>
+            <div class="post-likes">
+                좋아요 &nbsp; <span id="likes-count-{{ post.id }}"> {{ post.likes }}</span>개
+            </div>
+            <div class="posted-time">{{ post.created_at }}</div>
+            <form class="comment-form" data-post-id="{{ post.id }}">
+                <textarea name="content" placeholder="댓글 달기..." rows="1" class="comment-input"></textarea>
+                <button type="submit" class="comment-submit-btn">게시</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/like.js' %}"></script>
+    <script src="{% static 'js/comment.js' %}"></script>
+</body>
+</html>

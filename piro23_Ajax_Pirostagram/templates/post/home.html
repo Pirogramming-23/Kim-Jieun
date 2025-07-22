@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirostagram</title>
+    <link rel="stylesheet" href="{%static 'post/css/home.css'%}">
+</head>
+<body>
+    <!--왼쪽 네비게이션 바-->
+    <div class="navbar">
+        <a href="{% url 'post:home' %}">Pirostagram</a>
+        <ol>
+            <li><a href="{% url 'post:home' %}">홈</a></li>
+            <li><a href="#">검색</a></li>
+            <li><a href="#">메시지</a></li>
+            <li><a href="{% url 'post:create_post' %}">만들기</a></li>
+            <li><a href="#">프로필</a></li>
+            <li><a href="{% url 'user:logout_view' %}">로그아웃</a></li>
+        </ol>
+        <a href="#">Threads</a>
+        <a href="#">더 보기</a>
+    </div>
+
+    <!--중간 피드-->
+    <div class="feed">
+        <div class="feed-story">
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_00</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_01</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_02</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_03</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_04</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_05</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_06</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_07</div>
+            </div>
+            <div>
+                <img src="{% static 'post/image/profileimg.png' %}" alt="story">
+                <div>piro_08</div>
+            </div>
+        </div>
+        <div class="feed-posts">
+            {% for post in posts %}
+            <div class="post">
+                <div class="post-upper">
+                    <div class="post-upper-left">
+                        <a href="#">{{ post.author }}</a>
+                        •
+                        {{ post.created_at }}
+                    </div>
+                    <div class="post-delete">
+                        <a href="{% url 'post:delete_post' post.pk %}">삭제</a>
+                    </div>
+                </div>
+                <div class="img-content">
+                    {% for img in post.images.all %}
+                        <img src="{{ img.image.url }}" alt="Post Image" style="max-width: 100%; height: auto;" />
+                    {% endfor %}
+                </div>
+                <div class="post-buttons">
+                    <div class="likebtn" onClick="onClickLike({{ post.id }})">좋아요 버튼</div>
+                    <a class="commentbtn" href="{% url 'post:post_detail' post.pk %}">댓글</a>
+                </div>
+                <div class="post-likes">
+                    좋아요 &nbsp; <span id="likes-count-{{ post.id }}"> {{ post.likes }}</span>개
+                </div>
+                <div class="txt-content">{{post.txtContent}}</div>
+                <a class="comment-count" href="{% url 'post:post_detail' post.pk %}">
+                    댓글 <span id="comment-count-{{ post.id }}">{{ post.comment_count }}</span>개
+                </a>
+                <div class="comments">
+                    <form class="comment-form" data-post-id="{{ post.id }}">
+                        <textarea name="content" placeholder="댓글 달기..." rows="1" class="comment-input"></textarea>
+                        <button type="submit" class="comment-submit-btn">게시</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!--오른쪽 계정 추천-->
+    <div class="right">
+        <div class="user-suggest">
+            {% for user in users %}
+            <div>
+                <div>{{ user.username }}</div>
+                <button>팔로우</button>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="footer">
+            <div>
+                <a href="#">소개</a>
+                <a href="#">도움말</a>
+                <a href="#">홍보 센터</a>
+                <a href="#">API</a>
+                <a href="#">채용 정보</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">약관</a>
+                <a href="#">위치</a>
+                <a href="#">언어</a>
+                <a href="#">Meta Verified</a>
+            </div>
+            © 2025 Pirostagram from Pirogramming
+        </div>
+    </div>
+    <script src="{% static 'js/like.js' %}"></script>
+    <script src="{% static 'js/comment.js' %}"></script>
+</body>
+</html>
